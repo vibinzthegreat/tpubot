@@ -12,7 +12,7 @@ driver = webdriver.Chrome()
 driver.get(gpulink)
 
 
-bot = lightbulb.BotApp(intents=hikari.Intents.ALL,  token="MTMyMDU5MTkzNTU1MTA0OTc1OA.GpwvgE.5NyxzuXprGPjJfft9G8FIPyHtdySX3sDilYUu8", prefix='%')
+bot = lightbulb.BotApp(intents=hikari.Intents.ALL,  token="your token here", prefix='%')
 
 
 @bot.command
