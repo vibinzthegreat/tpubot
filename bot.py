@@ -6,11 +6,16 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 gpulink = 'https://www.techpowerup.com/gpu-specs/'
+cpulink = 'https://www.techpowerup.com/cpu-specs/'
 chrome_options = Options()
 chrome_options.add_argument("--headless")
 
 driver = webdriver.Chrome(options=chrome_options)
 driver.get(gpulink)
+driver.switch_to.new_window("tab")
+driver.get(cpulink)
+
+
 
 
 
@@ -32,6 +37,7 @@ names = driver.find_elements(By.XPATH, "/html/body/div/div[3]/div[1]/div[2]/tabl
 @lightbulb.command('gpu', "lists gpu's")
 @lightbulb.implements(lightbulb.PrefixCommand)
 async def gpu(ctx):
+    driver.navigate().to("https://www.techpowerup.com/gpu-specs/")
     for elem in elems:
         elem.send_keys(ctx.options.text)
     time.sleep(0.5)
@@ -51,6 +57,7 @@ async def gpu(ctx):
 @lightbulb.command('cpu', "lists cpu spec link")
 @lightbulb.implements(lightbulb.PrefixCommand)
 async def gpu(ctx):
+    driver.navigate().to("https://www.techpowerup.com/cpu-specs/")
     for elem in elems:
         elem.send_keys(ctx.options.text)
     time.sleep(0.5)
