@@ -6,10 +6,12 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 gpulink = 'https://www.techpowerup.com/gpu-specs/'
+chrome_options = Options()
+chrome_options.add_argument("--headless")
 
-
-driver = webdriver.Chrome()
+driver = webdriver.Chrome(options=chrome_options)
 driver.get(gpulink)
+
 
 
 bot = lightbulb.BotApp(intents=hikari.Intents.ALL, token=input("your token here(change this line to your token if you do not want to save the token every time):   "), prefix='%')
