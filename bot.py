@@ -39,7 +39,7 @@ names = driver.find_elements(By.XPATH, "/html/body/div/div[3]/div[1]/div[2]/tabl
 @lightbulb.command('gpu', "lists gpu's")
 @lightbulb.implements(lightbulb.PrefixCommand)
 async def gpu(ctx):
-    driver.switch_to.window("https://www.techpowerup.com/gpu-specs/")
+    driver.switch_to.window(driver.window_handles[0])
     for elem in elems:
         elem.send_keys(ctx.options.text)
     time.sleep(0.5)
@@ -59,7 +59,7 @@ async def gpu(ctx):
 @lightbulb.command('cpu', "lists cpu spec link")
 @lightbulb.implements(lightbulb.PrefixCommand)
 async def gpu(ctx):
-    driver.switch_to.window("https://www.techpowerup.com/cpu-specs/")
+    driver.switch_to.window(driver.window_handles[1])
     for elem in elems:
         elem.send_keys(ctx.options.text)
     time.sleep(0.5)
