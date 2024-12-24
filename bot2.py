@@ -37,6 +37,9 @@ async def ping(ctx):
 gpu_input_xpath = "/html/body/div/div[3]/div[1]/form/section/div/fieldset[3]/div/input"
 gpu_link_xpath = "/html/body/div/div[3]/div[1]/div[2]/table/tbody/tr[1]/td[1]/a"
 
+cpu_input_xpath = "/html/body/div/div[3]/div[1]/form/section/div/fieldset[3]/div/input"  # Same as GPU for now
+cpu_link_xpath = "/html/body/div/div[3]/div[1]/div[2]/table/tbody/tr[1]/td[1]/a"  # Same as GPU for now
+
 # These elements might be used for both CPU and GPU, so you may want to find them again in each function
 @bot.command
 @lightbulb.option("text", "text to repeat", modifier=lightbulb.OptionModifier.CONSUME_REST)
@@ -73,11 +76,11 @@ async def cpu(ctx):
     
     # Wait for the input element to be present on the page
     try:
-        elem = wait.until(EC.presence_of_element_located((By.XPATH, gpu_input_xpath)))  # Same XPath as GPU input
+        elem = wait.until(EC.presence_of_element_located((By.XPATH, cpu_input_xpath)))  # Same XPath as GPU input
         elem.send_keys(ctx.options.text)
         
         # Wait for the result link to be clickable
-        result_elem = wait.until(EC.element_to_be_clickable((By.XPATH, gpu_link_xpath)))  # Same XPath as GPU link
+        result_elem = wait.until(EC.element_to_be_clickable((By.XPATH, cpu_link_xpath)))  # Same XPath as GPU link
         await ctx.respond(result_elem.get_attribute('href'))
     
     except selenium.common.exceptions.NoSuchElementException:
