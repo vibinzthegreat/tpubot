@@ -22,7 +22,7 @@ print(driver.current_window_handle)
 
 window_handles = driver.window_handles
 
-bot = lightbulb(intents=hikari.Intents.ALL, token=input("your token here(change this line to your token if you do not want to save the token every time):   "), prefix='%')
+bot = lightbulb.BotApp(intents=hikari.Intents.ALL, token=input("your token here(change this line to your token if you do not want to save the token every time):   "), prefix='%')
 
 # Define the wait object for future use
 wait = WebDriverWait(driver, 10)  # 10 seconds timeout for waiting
