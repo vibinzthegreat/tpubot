@@ -43,7 +43,7 @@ names = driver.find_elements(By.XPATH, "/html/body/div/div[3]/div[1]/div[2]/tabl
 @lightbulb.implements(lightbulb.PrefixCommand)
 async def gpu(ctx):
     driver.switch_to.window(window_handles[0])
-    time.sleep(2)
+    time.sleep(10)
     for elem in elems:
         elem.send_keys(ctx.options.text)
     time.sleep(0.5)
