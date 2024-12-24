@@ -12,7 +12,7 @@ driver = webdriver.Chrome()
 driver.get(gpulink)
 
 
-bot = lightbulb.BotApp(intents=hikari.Intents.ALL,  token=your token here, prefix='%')
+bot = lightbulb.BotApp(intents=hikari.Intents.ALL, token=input("your token here"), prefix='%')
 
 
 @bot.command
@@ -38,6 +38,25 @@ async def gpu(ctx):
 
     except selenium.common.exceptions.NoSuchElementException:
         await ctx.respond("No GPU found! Please try again. the proper format is skuname(gt/gtx/rtx) + model number + suffix(xt/super/ti)")
+
+
+    finally:
+        elem.clear()
+
+
+@bot.command
+@lightbulb.option("text", "text to repeat", modifier=lightbulb.OptionModifier.CONSUME_REST)
+@lightbulb.command('cpu', "lists cpu spec link")
+@lightbulb.implements(lightbulb.PrefixCommand)
+async def gpu(ctx):
+    for elem in elems:
+        elem.send_keys(ctx.options.text)
+    time.sleep(0.5)
+    try:
+        await ctx.respond(driver.find_element(By.XPATH, '/html/body/div/div[3]/div[1]/div[2]/table/tbody/tr[1]/td[1]/a').get_attribute('href'))
+
+    except selenium.common.exceptions.NoSuchElementException:
+        await ctx.respond("No CPU found! Please try again. the proper format is skuname + model number + suffix. if that does not work make sure there are spaces where needed")
 
 
     finally:
