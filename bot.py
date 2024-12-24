@@ -12,8 +12,10 @@ chrome_options.add_argument("--headless")
 
 driver = webdriver.Chrome(options=chrome_options)
 driver.get(gpulink)
+driver.current_window_handle
 driver.switch_to.new_window("tab")
 driver.get(cpulink)
+driver.current_window_handle
 
 
 
