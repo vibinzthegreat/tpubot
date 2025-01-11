@@ -13,9 +13,10 @@ load_dotenv()
 
 # VARIABLES
 
+options = Options()
+options.add_argument("--headless=new")
+driver = webdriver.Chrome(options=options)
 gputkn = os.getenv('GPUTOKEN')
-chrome_options = Options()
-driver = webdriver.Chrome(options=chrome_options)
 gpulink = 'https://www.techpowerup.com/gpu-specs/'
 bot = lightbulb.BotApp(intents=hikari.Intents.ALL, token=gputkn)
 elems = driver.find_elements(By.XPATH, "/html/body/div/div[3]/div[1]/form/section/div/fieldset[3]/div/input")
@@ -23,7 +24,6 @@ names = driver.find_elements(By.XPATH, "/html/body/div/div[3]/div[1]/div[2]/tabl
 
 # LAUNCH CHROME
 
-chrome_options.add_argument("--headless")
 driver.get(gpulink)
 
 # BOT COMMANDS
