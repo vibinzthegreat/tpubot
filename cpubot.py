@@ -12,7 +12,7 @@ from dotenv import load_dotenv
 
 load_dotenv() 
 
-# VARIABLES
+# VARIABLES ghffg
 
 cputkn = os.getenv('CPUTOKEN')
 chrome_options = Options()
