@@ -5,21 +5,14 @@ import selenium.common.exceptions
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
-import os
-from dotenv import load_dotenv
-
-# LAUNCH DOTENV
-
-load_dotenv() 
 
 # VARIABLES
 
-cputkn = os.getenv('CPUTOKEN')
 chrome_options = Options()
 chrome_options.add_argument("--headless")
 driver = webdriver.Chrome(options=chrome_options)
 gpulink = 'https://www.techpowerup.com/gpu-specs/'
-bot = lightbulb.BotApp(intents=hikari.Intents.ALL, token=cputkn)
+bot = lightbulb.BotApp(intents=hikari.Intents.ALL, token=("put token here when its on the server"))
 elems = driver.find_elements(By.XPATH, "/html/body/div/div[3]/div[1]/form/section/div/fieldset[3]/div/input")
 names = driver.find_elements(By.XPATH, "/html/body/div/div[3]/div[1]/div[2]/table/tbody/tr[1]/td[1]/a")
 
@@ -37,7 +30,7 @@ async def ping(ctx):
     await ctx.respond('ping!')
 
 
-@bot.command # GPU COMMAND
+@bot.command # CPU COMMAND
 @lightbulb.option("text", "text to repeat", modifier=lightbulb.OptionModifier.CONSUME_REST)
 @lightbulb.command('CPU', "Lists cpu's")
 @lightbulb.implements(lightbulb.SlashCommand)
