@@ -13,13 +13,16 @@ chrome_options.add_argument("--headless")
 driver = webdriver.Chrome(options=chrome_options)
 gpulink = 'https://www.techpowerup.com/gpu-specs/'
 bot = lightbulb.BotApp(intents=hikari.Intents.ALL, token=("put token here when its on the server"))
-elems = driver.find_elements(By.XPATH, "/html/body/div/div[3]/div[1]/form/section/div/fieldset[3]/div/input")
-names = driver.find_elements(By.XPATH, "/html/body/div/div[3]/div[1]/div[2]/table/tbody/tr[1]/td[1]/a")
 
 # LAUNCH CHROME
 
-chrome_options.add_argument("--headless")
 driver.get(gpulink)
+
+# VARS FOR SELENIUM
+
+elems = driver.find_elements(By.XPATH, "/html/body/div/div[3]/div[1]/form/section/div/fieldset[3]/div/input")
+names = driver.find_elements(By.XPATH, "/html/body/div/div[3]/div[1]/div[2]/table/tbody/tr[1]/td[1]/a")
+
 
 # BOT COMMANDS
 
