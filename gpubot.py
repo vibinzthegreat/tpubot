@@ -12,7 +12,7 @@ chrome_options = Options()
 chrome_options.add_argument("--headless")
 driver = webdriver.Chrome(options=chrome_options)
 gpulink = 'https://www.techpowerup.com/gpu-specs/'
-bot = lightbulb.BotApp(intents=hikari.Intents.ALL, token=("your token here"))
+bot = lightbulb.BotApp(intents=hikari.Intents.ALL, token=("insert token here"), prefix="%")
 
 # LAUNCH CHROME
 
@@ -27,7 +27,7 @@ names = driver.find_elements(By.XPATH, "/html/body/div/div[3]/div[1]/div[2]/tabl
 
 @bot.command # PING COMMAND
 @lightbulb.command('ping', 'says pong')
-@lightbulb.implements(lightbulb.SlashCommand)
+@lightbulb.implements(lightbulb.PrefixCommand, lightbulb.SlashCommand)
 async def ping(ctx):
     await ctx.respond('pong!')
 
@@ -35,7 +35,7 @@ async def ping(ctx):
 @bot.command # GPU COMMAND
 @lightbulb.option("text", "text to repeat", modifier=lightbulb.OptionModifier.CONSUME_REST)
 @lightbulb.command('gpu', "lists gpu's")
-@lightbulb.implements(lightbulb.SlashCommand)
+@lightbulb.implements(lightbulb.PrefixCommand, lightbulb.SlashCommand)
 async def gpu(ctx):
     for elem in elems:
         elem.send_keys(ctx.options.text)
