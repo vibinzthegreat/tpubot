@@ -35,7 +35,7 @@ async def ping(ctx):
 
 @bot.command # CPU COMMAND
 @lightbulb.option("text", "text to repeat", modifier=lightbulb.OptionModifier.CONSUME_REST)
-@lightbulb.command('CPU', "Lists cpu's")
+@lightbulb.command('cpu', "Lists cpu's")
 @lightbulb.implements(lightbulb.SlashCommand)
 async def gpu(ctx):
     for elem in elems:
