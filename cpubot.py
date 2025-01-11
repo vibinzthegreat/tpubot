@@ -11,8 +11,8 @@ from selenium.webdriver.common.by import By
 chrome_options = Options()
 chrome_options.add_argument("--headless")
 driver = webdriver.Chrome(options=chrome_options)
-gpulink = 'https://www.techpowerup.com/gpu-specs/'
-bot = lightbulb.BotApp(intents=hikari.Intents.ALL, token=("put token here when its on the server"))
+gpulink = 'https://www.techpowerup.com/cpu-specs/'
+bot = lightbulb.BotApp(intents=hikari.Intents.ALL, token=("your token here"))
 
 # LAUNCH CHROME
 
