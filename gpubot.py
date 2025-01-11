@@ -13,9 +13,9 @@ load_dotenv()
 
 # VARIABLES
 
-options = Options()
-options.add_argument("--headless=new")
-driver = webdriver.Chrome(options=options)
+chrome_options = Options()
+chrome_options.add_argument("--headless")
+driver = webdriver.Chrome(options=chrome_options)
 gputkn = os.getenv('GPUTOKEN')
 gpulink = 'https://www.techpowerup.com/gpu-specs/'
 bot = lightbulb.BotApp(intents=hikari.Intents.ALL, token=gputkn)

@@ -12,10 +12,11 @@ from dotenv import load_dotenv
 
 load_dotenv() 
 
-# VARIABLES ghffg
+# VARIABLES
 
 cputkn = os.getenv('CPUTOKEN')
 chrome_options = Options()
+chrome_options.add_argument("--headless")
 driver = webdriver.Chrome(options=chrome_options)
 gpulink = 'https://www.techpowerup.com/gpu-specs/'
 bot = lightbulb.BotApp(intents=hikari.Intents.ALL, token=cputkn)
